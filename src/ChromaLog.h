@@ -34,7 +34,7 @@ private:
 	static std::map<std::string, std::string> colorMap;
 
 	static std::string process(const std::string& message) {
-#ifndef EDDIE_LOG_COLOR_ENABLED
+#ifndef CHROMA_LOG_COLOR_ENABLED
 		std::regex pattern(R"(~(\w+)\(([^)]+)\)~)");
 		return std::regex_replace(message, pattern, "$2");  // Strip out color tags, keep format specifiers
 #else
@@ -59,7 +59,7 @@ public:
 	static void log(const char* file, int line, const char* func, const char* format, ...) {
 		std::string processedFormat = process(std::string(format));
 
-#ifdef EDDIE_LOG_OUTPUT_ADVANCED
+#ifdef CHROMA_LOG_OUTPUT_ADVANCED
 		printf("[%s:%d] %s(): ", file, line, func);
 #endif
 		va_list args;
