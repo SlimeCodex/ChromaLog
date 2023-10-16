@@ -119,7 +119,7 @@ public:
 			CHROMA_LOG_CHANNEL.printf(CHROMA_LOG_FUNC_COLOR " %s " ANSI_RESET, func);
 			#endif
 
-			CHROMA_LOG_CHANNEL.printf(" ");
+			//CHROMA_LOG_CHANNEL.printf(" ");
 
 			va_list args;
 			va_start(args, format);
