@@ -143,6 +143,10 @@ public:
 	}
 };
 
+#ifdef CHROMA_LOG_ENABLED
 #define CHROMA_LOG(fmt, ...) ChromaLog::log(__FILE__, __LINE__, __func__, fmt, ##__VA_ARGS__)
+#else
+#define CHROMA_LOG(fmt, ...) 
+#endif
 
 #endif // ___CHROMA_LOG_H___
