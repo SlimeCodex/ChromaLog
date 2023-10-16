@@ -18,40 +18,24 @@
 
 #include <ChromaLog.h>
 
+SemaphoreHandle_t ChromaLog::log_mutex = xSemaphoreCreateMutex();
+
 std::map<std::string, std::string> ChromaLog::colorMap = {
-	{"black", "\033[30m"},
-	{"red", "\033[31m"},
-	{"green", "\033[32m"},
-	{"yellow", "\033[33m"},
-	{"blue", "\033[34m"},
-	{"magenta", "\033[35m"},
-	{"cyan", "\033[36m"},
-	{"white", "\033[37m"},
+	{"black", "\033[90m"},
+	{"red", "\033[91m"},
+	{"green", "\033[92m"},
+	{"yellow", "\033[93m"},
+	{"blue", "\033[94m"},
+	{"magenta", "\033[95m"},
+	{"cyan", "\033[96m"},
+	{"white", "\033[97m"},
 
-	{"b_black", "\033[90m"},
-	{"b_red", "\033[91m"},
-	{"b_green", "\033[92m"},
-	{"b_yellow", "\033[93m"},
-	{"b_blue", "\033[94m"},
-	{"b_magenta", "\033[95m"},
-	{"b_cyan", "\033[96m"},
-	{"b_white", "\033[97m"},
-
-	{"bg_black", "\033[40m"},
-	{"bg_red", "\033[41m"},
-	{"bg_green", "\033[42m"},
-	{"bg_yellow", "\033[43m"},
-	{"bg_blue", "\033[44m"},
-	{"bg_magenta", "\033[45m"},
-	{"bg_cyan", "\033[46m"},
-	{"bg_white", "\033[47m"},
-
-	{"bg_b_black", "\033[100m"},
-	{"bg_b_red", "\033[101m"},
-	{"bg_b_green", "\033[102m"},
-	{"bg_b_yellow", "\033[103m"},
-	{"bg_b_blue", "\033[104m"},
-	{"bg_b_magenta", "\033[105m"},
-	{"bg_b_cyan", "\033[106m"},
-	{"bg_b_white", "\033[107m"}
+	{"bg_black", "\033[100m"},
+	{"bg_red", "\033[101m"},
+	{"bg_green", "\033[102m"},
+	{"bg_yellow", "\033[103m"},
+	{"bg_blue", "\033[104m"},
+	{"bg_magenta", "\033[105m"},
+	{"bg_cyan", "\033[106m"},
+	{"bg_white", "\033[107m"}
 };
