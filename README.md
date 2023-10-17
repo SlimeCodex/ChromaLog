@@ -125,7 +125,7 @@ GENERIC_LOG("~red(This is a)~ ~blue(multicolored)~ ~green(message)~.\n");
 GENERIC_LOG("~bg_blue(And this)~ ~bg_red(is)~ ~bg_green(a)~ ~bg_yellow(patterned)~ ~bg_cyan(message)~.\n");
 ```
 
-![Example Output](./images/example_output_colored.jpg)
+![Example Output](./.img/example_output_colored.jpg)
 
 ## License
 
