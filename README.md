@@ -22,7 +22,7 @@ lib_deps =
 ```
 
 3. Save the `platformio.ini` file.
-4. Build your project. PlatformIO will automatically fetch and install the SmartSyncEvent library.
+4. Build your project. PlatformIO will automatically fetch and install the ChromaLog library.
 
 ## Basic Usage
 
