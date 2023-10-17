@@ -1,7 +1,3 @@
-# ChromaLog
-A vibrant, thread-safe logging utility for RTOS environments. Features colorful outputs, printf-style formatting, and mutex protection for concurrent tasks. Customize with compile-time flags. Designed for clarity, safety, and style.
-
-
 # ChromaLog Library
 
 The `ChromaLog` library offers colorful logging for ESP32 platforms. It enriches your log messages with vibrant colors to make them stand out, improving readability and debugging efficiency.
@@ -52,11 +48,11 @@ Here's a breakdown of the ChromaLog specific flags:
 
 ```cpp
 build_flags =
-	-D CHROMA_LOG_ENABLED		; Enables the output.
-	-D CHROMA_LOG_TIMESTAMP		; Add a timestamp to the log output.
-	;-D CHROMA_LOG_FILE_LINE	; Display the file and line number where the log is invoked.
-	;-D CHROMA_LOG_FUNC			; Display the function name where the log is invoked.
-	-D CHROMA_LOG_COLOR			; Enable colored output.
+	-D CHROMA_LOG_ENABLED ; Enables the output.
+	-D CHROMA_LOG_TIMESTAMP ; Add a timestamp to the log output.
+	;-D CHROMA_LOG_FILE_LINE ; Display the file and line number where the log is invoked.
+	;-D CHROMA_LOG_FUNC ; Display the function name where the log is invoked.
+	-D CHROMA_LOG_COLOR ; Enable colored output.
 ```
 
 Explanation of each flag:
