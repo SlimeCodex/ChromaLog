@@ -57,23 +57,23 @@ build_flags =
 
 Explanation of each flag:
 
-**CHROMA_LOG_ENABLED**: When defined, it activates the ChromaLog output. This can be useful if you want to have a quick way to toggle logging on or off without making code changes.
-**CHROMA_LOG_TIMESTAMP**: Adds a timestamp to the beginning of each log message. This can be very handy to track the timing of various log messages.
-**CHROMA_LOG_FILE_LINE** (commented out by default): When defined, it appends the file name and line number from where the log was invoked. Useful for quick debugging.
-**CHROMA_LOG_FUNC** (commented out by default): Displays the name of the function where the log message was invoked.
-**CHROMA_LOG_COLOR**: Enables the colorized output of the log messages. If not defined, automatically removes the color pattern to print the uncolored output.
+- **CHROMA_LOG_ENABLED**: When defined, it activates the ChromaLog output. This can be useful if you want to have a quick way to toggle logging on or off without making code changes.
+- **CHROMA_LOG_TIMESTAMP**: Adds a timestamp to the beginning of each log message. This can be very handy to track the timing of various log messages.
+- **CHROMA_LOG_FILE_LINE** (commented out by default): When defined, it appends the file name and line number from where the log was invoked. Useful for quick debugging.
+- **CHROMA_LOG_FUNC** (commented out by default): Displays the name of the function where the log message was invoked.
+- **CHROMA_LOG_COLOR**: Enables the colorized output of the log messages. If not defined, automatically removes the color pattern to print the uncolored output.
 
 ## Advanced Usage
 
 ### Custom Template Creation
 
-ChromaLog's flexible architecture allows for custom template creation. This means you're not limited to just the provided generic templates; you can design your own tailored logging macros to fit the specific needs of your project.
+ChromaLog architecture allows for custom template creation. This means you're not limited to just the provided generic templates; you can design your own tailored logging macros to fit the specific needs of your project.
 
 ## Why Create Custom Templates?
 
-**Project-Specific Standards**: Different projects might have distinct logging requirements. Custom templates allow you to adhere to any project-specific logging standards or formats.
-**Enhanced Readability**: With custom templates, you can add your own flair, using different colors or formats that make the logs more readable and understandable to your development team.
-**Quicker Debugging**: Tailored templates can help you pinpoint issues faster by categorizing and highlighting critical information in the manner you find most efficient.
+- **Project-Specific Standards**: Different projects might have distinct logging requirements. Custom templates allow you to adhere to any project-specific logging standards or formats.
+- **Enhanced Readability**: With custom templates, you can add your own flair, using different colors or formats that make the logs more readable and understandable to your development team.
+- **Quicker Debugging**: Tailored templates can help you pinpoint issues faster by categorizing and highlighting critical information in the manner you find most efficient.
 
 To create a custom template, you can use the foundational `CHROMA_LOG` function and embed your desired ANSI color codes or formats. Here's a basic outline to craft your own template:
 
