@@ -69,7 +69,7 @@ Explanation of each flag:
 
 ChromaLog architecture allows for custom template creation. This means you're not limited to just the provided generic templates; you can design your own tailored logging macros to fit the specific needs of your project.
 
-## Why Create Custom Templates?
+### Why Create Custom Templates?
 
 - **Project-Specific Standards**: Different projects might have distinct logging requirements. Custom templates allow you to adhere to any project-specific logging standards or formats.
 - **Enhanced Readability**: With custom templates, you can add your own flair, using different colors or formats that make the logs more readable and understandable to your development team.
@@ -92,7 +92,25 @@ Here are a few examples:
 #define GENERIC_LOGW(cat, fmt, ...) CHROMA_LOG("~bg_cyan( " cat " )~~bg_yellow( WARNING )~ ~yellow(" fmt ")~", ##__VA_ARGS__)
 ```
 
-WIP: Add images to show outputs.
+```cpp
+// Basic message with default formatting
+GENERIC_LOG("This is a basic message.\n");
+
+// Info message with cyan category and blue INFO tag
+GENERIC_LOGI("SYSTEM", "This is an informational message.\n");
+
+// Error message with cyan category, red ERROR tag, and red text
+GENERIC_LOGE("NETWORK", "A network error occurred.\n");
+
+// Warning message with cyan category, yellow WARNING tag, and yellow text
+GENERIC_LOGW("CONFIG", "Configuration not found.\n");
+
+// Example showing multicolored and patterned text using the templates
+GENERIC_LOG("~red(This is a)~ ~blue(multicolored)~ ~green(message)~.\n");
+GENERIC_LOG("~bg_blue(And this)~ ~bg_red(is)~ ~bg_green(a)~ ~bg_yellow(patterned)~ ~bg_cyan(message)~.\n");
+```
+
+![Example Output](./images/example_output_1.jpg)
 
 ## License
 
