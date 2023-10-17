@@ -18,7 +18,7 @@ PlatformIO offers a streamlined way to manage your project dependencies.
 
 ```
 lib_deps =
-	https://github.com/YourUsername/ChromaLog@^1.0.0
+	https://github.com/SlimeCodex/ChromaLog@^1.0.0
 ```
 
 3. Save the `platformio.ini` file.
