@@ -49,9 +49,15 @@
 #define ANSI_BG_CYAN	"\033[106m"
 #define ANSI_BG_WHITE	"\033[107m"
 
-#define CHROMA_LOG_TIMESTAMP_COLOR	ANSI_BG_BLACK
-#define CHROMA_LOG_FILE_LINE_COLOR	ANSI_BG_BLACK
-#define CHROMA_LOG_FUNC_COLOR		ANSI_BG_BLACK
+#ifdef CHROMA_LOG_COLOR
+	#define CHROMA_LOG_TIMESTAMP_COLOR  ANSI_BG_BLACK
+	#define CHROMA_LOG_FILE_LINE_COLOR  ANSI_BG_BLACK
+	#define CHROMA_LOG_FUNC_COLOR       ANSI_BG_BLACK
+#else
+	#define CHROMA_LOG_TIMESTAMP_COLOR  ""
+	#define CHROMA_LOG_FILE_LINE_COLOR  ""
+	#define CHROMA_LOG_FUNC_COLOR       ""
+#endif
 
 class ChromaLog {
 private:
@@ -60,18 +66,23 @@ private:
 
 	static std::string process(const std::string& message) {
 #ifndef CHROMA_LOG_COLOR
-		// Find all patterns and simply remove them
-		std::string processed = message;
-		size_t start = 0;
-		while ((start = processed.find('~', start)) != std::string::npos) {
-			size_t openPar = processed.find('(', start);
-			size_t closePar = processed.find(')', openPar);
-			if (openPar != std::string::npos && closePar != std::string::npos) {
-				processed = processed.substr(0, start) + processed.substr(openPar + 1, closePar - openPar - 1) + processed.substr(closePar + 2);
-			}
-			start = start + 1; // move past the current '~'
+	// Find all patterns and simply remove them
+	std::string processed = message;
+	size_t start = 0;
+	while ((start = processed.find('~', start)) != std::string::npos) {
+		size_t openPar = processed.find('(', start);
+		size_t closePar = processed.find(')', openPar);
+		if (openPar != std::string::npos && closePar != std::string::npos) {
+			// If we find a full pattern '~color(text)~'
+			processed = processed.substr(0, start) + processed.substr(openPar + 1, closePar - openPar - 1) + processed.substr(closePar + 2);
+			start = start + closePar - openPar - 1;  // Update the starting point to move past the processed pattern
+		} else {
+			// If it's just a '~' without the following color pattern
+			processed = processed.substr(0, start) + processed.substr(start + 1);  // Strip out the '~'
+			start = start + 1;  // Move past the current location
 		}
-		return processed;
+	}
+	return processed;
 #else
 		std::string processed = message;
 		size_t start = 0;
@@ -105,6 +116,7 @@ private:
 		return processed;
 #endif
 	}
+	
 public:
 	static void log(const char* file, int line, const char* func, const char* format, ...) {
 		if (xSemaphoreTake(log_mutex, portMAX_DELAY) == pdTRUE) {
