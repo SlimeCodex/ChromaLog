@@ -77,7 +77,14 @@ private:
 		size_t start = 0;
 		while ((start = processed.find('~', start)) != std::string::npos) {
 			size_t openPar = processed.find('(', start);
-			size_t closePar = processed.find(')', openPar);
+			
+			size_t endTilde = processed.find('~', openPar); // find the next tilde after openPar
+			if (endTilde == std::string::npos) {
+				start = start + 1;
+				continue;
+			}
+			size_t closePar = processed.rfind(')', endTilde); // find the last closing parenthesis before endTilde
+
 			if (openPar != std::string::npos && closePar != std::string::npos) {
 				std::string color = processed.substr(start + 1, openPar - start - 1);
 				std::string content = processed.substr(openPar + 1, closePar - openPar - 1);
